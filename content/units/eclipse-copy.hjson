@@ -1,0 +1,111 @@
+type: UnitType
+name: eclipse-copy
+
+// 显示名
+localizedName: 厄兆（复制版）
+
+// 基本属性
+health: 22000
+armor: 13
+speed: 0.43
+accel: 0.04
+drag: 0.04
+rotateSpeed: 0.9
+flying: true
+lowAltitude: true
+circleTarget: true
+canBoost: false
+// 碰撞体积
+hitSize: 58
+
+// 建造需求
+requirements: [
+    copper/3500
+    lead/2800
+    metaglass/1200
+    graphite/900
+    silicon/900
+    plastanium/600
+    phase-fabric/400
+    surge-alloy/350
+]
+category: unit
+research: eclipse   // 解锁条件：原版厄兆
+researchCostMultiplier: 1
+
+// AI
+aiController: BuilderAI
+
+// 武器
+weapons: [
+    {
+        name: large-laser-mount
+        x: 18.5
+        y: 0
+        rotate: true
+        shootCone: 8
+        shootY: 5.5
+        reload: 90
+        recoil: 4
+        shootSound: laser
+        bullet: {
+            type: ContinuousLaserBulletType
+            damage: 75
+            length: 560
+            width: 45
+            colors: [ bf4f37ff, ffffffff ]
+            largeHit: true
+            lightColor: ff4f37
+            shootEffect: none
+            smokeEffect: none
+            hitEffect: Fx.hitMeltdown
+            despawnEffect: Fx.none
+            continuous: true
+        }
+    }
+    {
+        name: missile-mount
+        x: 0
+        y: -8
+        shootY: 3
+        reload: 30
+        shots: 2
+        shotDelay: 4
+        inaccuracy: 2
+        bullet: {
+            type: MissileBulletType
+            damage: 40
+            speed: 4.2
+            lifetime: 60
+            splashDamage: 30
+            splashDamageRadius: 24
+            homingPower: 0.08
+            keepVelocity: false
+            smokeEffect: Fx.shootBigSmoke2
+            hitEffect: Fx.blastExplosion
+            despawnEffect: Fx.blastExplosion
+            trailColor: bf4f37
+            backColor: bf4f37
+            frontColor: ffffffff
+        }
+    }
+]
+
+abilities: [
+    {
+        type: ForceFieldAbility
+        radius: 60
+        regen: 400
+        max: 7000
+        cooldown: 10
+    }
+    {
+        type: RepairFieldAbility
+        amount: 500
+        reload: 180
+        range: 60
+    }
+]
+
+// 贴图
+outlineColor: 404040ff
